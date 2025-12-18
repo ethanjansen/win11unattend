@@ -25,8 +25,11 @@ unattend.xml generated using [schneegans.de unattend generator](https://schneega
     - Persist device installs
   - Specialize:
     - **\[Prompt\]** Set computer name
-      - Does not check for valid computer name
-      - Use alphanumeric characters or hyphens, must contain one letter, 1-15 character limit
+      - Must match `^(?=[A-Za-z0-9-]{3,15}$)(?=.*[A-Za-z])[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$`
+        - 3-15 characters
+        - Can contain lowercase/uppercase letters, numbers, and hyphens
+        - Must not begin or end with hyphens
+        - Must contain at least 1 letter
     - Remove Windows packages:
       - New Outlook for Windows
       - Windows Feedback Hub
@@ -70,10 +73,14 @@ unattend.xml generated using [schneegans.de unattend generator](https://schneega
       - Notepad++
     - Set [default app associations](./appassociations.xml) (this cannot set a default browser)
     - **\[Prompt\]** Set username and password
-      - Does not check invalid characters
+      - Username must match `^(?![._-]$)(?!.*\.$)[A-Za-z0-9._-]{1,20}$`
+        - 1-20 characters
+        - Can contain lowercase/uppercase letters, numbers, periods, underscores, and hyphens
+        - Must not be only a single period, underscore, or hyphen
+        - Must not end with a period
       - Accepts blank passwords
-      - Does not allow using Administrator account
-      - Add user to Administrators group
+      - Does not allow using Administrator or other pre-existing account
+    - Add new user to Administrators group
     - Disable Administrator account
     - Remove unattend.xml and unattend-original.xml (scripts and logs are kept in C:\Windows\Setup\Scripts)
   - First Logon (created user):
