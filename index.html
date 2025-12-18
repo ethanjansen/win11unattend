@@ -1,0 +1,37 @@
+<#
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8">
+    <title>Windows 11 Unattended Setup</title>
+  </head>
+  <body>
+    <p>This page is meant to be executed, not viewed.</p>
+
+    <p>Run from <strong>cmd</strong>:</p>
+    <pre><code>curl -L ethanjansen.github.io/win11unattend | powershell -Command -</code></pre>
+
+    <p>Source code is available at <a href="https://github.com/ethanjansen/win11unattend">GitHub</a></p>
+  </body>
+</html>
+#>
+try {
+  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/unattend.xml -OutFile "$env:WINDIR\Panther\unattend.xml" -ErrorAction Stop;
+  Write-Host "Configuring Windows...";
+  $blv = Get-BitLockerVolume -MountPoint $env:SystemDrive -ErrorAction Stop;
+  if ($blv.VolumeStatus -eq "FullyEncrypted" -or $blv.VolumeStatus -eq "EncryptionInProgress") {
+    Disable-BitLocker -MountPoint $env:SystemDrive -ErrorAction Stop | Out-Null;
+    do {
+      Write-Host "Decrypting BitLocker: $($blv.EncryptionPercentage) encrypted...";
+      Start-Sleep -Seconds 10;
+      $blv = Get-BitLockerVolume -MountPoint $env:SystemDrive;
+    } while ($blv.VolumeStatus -ne "FullyDecrypted");
+  }
+  Write-Host "Using /generalize";
+  & "$env:WINDIR\System32\Sysprep\Sysprep.exe" /generalize /oobe /unattend:"$env:WINDIR\Panther\unattend.xml" /reboot;
+} catch {
+  Write-Error "Fatal error: $($_.Exception.Message)";
+  exit 1;
+}
+
+#EOF - This comment and the blank line above are VERY important for handling multi-line command blocks with powershell execution from stdin. DO NOT REMOVE 

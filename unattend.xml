@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&GeoLocation=244&ProcessorArchitecture=amd64&ComputerNameMode=Script&ComputerNameScript=Add-Type+-AssemblyName+%27Microsoft.VisualBasic%27%3B%0D%0Areturn+%5BMicrosoft.VisualBasic.Interaction%5D%3A%3AInputBox%28+%27Enter+a+valid+computer+name%3A%27%2C+%27Computer+name%27%2C+%27%27+%29%3B&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AutoLogonMode=Builtin&BuiltinAdministratorPassword=&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=HiddenSystem&ShowFileExtensions=true&ClassicContextMenu=true&LaunchToThisPC=true&TaskbarSearch=Icon&TaskbarIconsMode=Custom&TaskbarIconsXml=%3CLayoutModificationTemplate%0D%0A++++xmlns%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FLayoutModification%22%0D%0A++++xmlns%3Adefaultlayout%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FFullDefaultLayout%22%0D%0A++++xmlns%3Astart%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FStartLayout%22%0D%0A++++xmlns%3Ataskbar%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FTaskbarLayout%22%0D%0A++++Version%3D%221%22%3E%0D%0A++%3CCustomTaskbarLayoutCollection+PinListPlacement%3D%22Replace%22%3E%0D%0A++++%3Cdefaultlayout%3ATaskbarLayout%3E%0D%0A++++++%3Ctaskbar%3ATaskbarPinList%3E%0D%0A++++++++%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Microsoft.Windows.Explorer%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Chrome%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22%7B6D809377-6AF0-444B-8957-A3773F02200E%7D%5CNotepad%2B%2B%5Cnotepad%2B%2B.exe%22+PinGeneration%3D%221%22%2F%3E%0D%0A++++++%3C%2Ftaskbar%3ATaskbarPinList%3E%0D%0A++++%3C%2Fdefaultlayout%3ATaskbarLayout%3E%0D%0A+%3C%2FCustomTaskbarLayoutCollection%3E%0D%0A%3C%2FLayoutModificationTemplate%3E&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableLongPaths=true&AllowPowerShellScripts=true&DisableAppSuggestions=true&PreventDeviceEncryption=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DisablePointerPrecision=true&DeleteWindowsOld=true&EffectsMode=Default&DeleteEdgeDesktopIcon=true&DesktopIconsMode=Custom&IconRecycleBin=true&StartFoldersMode=Custom&StartFolderFileExplorer=true&StartFolderPersonalFolder=true&StartFolderSettings=true&WifiMode=Skip&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Disabled&ColorMode=Default&WallpaperMode=Default&LockScreenMode=Default&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveOutlook=true&RemoveSkype=true&RemoveSolitaire=true&RemoveGetStarted=true&RemoveXboxApps=true&SystemScript0=New-NetFirewallRule+-DisplayName+%27ICMPv4%27+-Profile+%27Any%27+-Protocol+%27ICMPv4%27+-Action+%27Allow%27%3B%0D%0ANew-NetFirewallRule+-DisplayName+%27ICMPv6%27+-Profile+%27Any%27+-Protocol+%27ICMPv6%27+-Action+%27Allow%27%3B&SystemScriptType0=Ps1&FirstLogonScript0=try%7B%0D%0A++Write-Output+%22Waiting+to+install+apps%22%3B%0D%0A++Start-Sleep+300%3B%0D%0A++Write-Output+%22Installing+Chocolatey%22%3B%0D%0A++%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+%3D+%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+-bor+3072%3B%0D%0A++iex+%28%28New-Object+System.Net.WebClient%29.DownloadString%28%27https%3A%2F%2Fcommunity.chocolatey.org%2Finstall.ps1%27%29%29+-ErrorAction+Stop%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fchocopackages.config+-OutFile+%22%24env%3ATEMP%5Cpackages.config%22+-ErrorAction+Stop%3B%0D%0A++choco+install+-y+%22%24env%3ATEMP%5Cpackages.config%22+%2D%2Dlimit-output+%2D%2Dno-progress+%2D%2Dlog-file%3D%22%24env%3AWINDIR%5CSetup%5CScripts%5Cchocolatey.apps.log%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cpackages.config%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType0=Ps1&FirstLogonScript1=try%7B%0D%0A++Start-Sleep+30%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fappassociations.xml+-OutFile+%22%24env%3ATEMP%5Cappassociations.xml%22+-ErrorAction+Stop%3B%0D%0A++Dism+%2FOnline+%2FImport-DefaultAppAssociations%3A%22%24env%3ATEMP%5Cappassociations.xml%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cappassociations.xml%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType1=Ps1&FirstLogonScript2=Add-Type+-AssemblyName+System.Windows.Forms%3B%0D%0AAdd-Type+-AssemblyName+System.Drawing%3B%0D%0A%0D%0Afunction+Show-UserPrompt+%7B%0D%0A++++param%28%5Bstring%5D%24Msg+%3D+%22%22%29%3B%0D%0A%0D%0A++++%24form+%3D+New-Object+System.Windows.Forms.Form%3B%0D%0A++++%24form.Text+%3D+%22Create+Administrator+Account%22%3B%0D%0A++++%24form.Size+%3D+New-Object+System.Drawing.Size%28360%2C300%29%3B%0D%0A++++%24form.StartPosition+%3D+%22CenterScreen%22%3B%0D%0A++++%24form.Topmost+%3D+%24true%3B%0D%0A%0D%0A++++%24lblMsg+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblMsg.Text+%3D+%24Msg%3B%0D%0A++++%24lblMsg.Location+%3D+%2720%2C10%27%3B%0D%0A++++%24lblMsg.AutoSize+%3D+%24true%3B%0D%0A++++%24lblMsg.ForeColor+%3D+%22Red%22%3B%0D%0A%0D%0A++++%24lblUser+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblUser.Text+%3D+%22Username%3A%22%3B%0D%0A++++%24lblUser.Location+%3D+%2720%2C40%27%3B%0D%0A++++%24lblUser.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtUser+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtUser.Location+%3D+%2720%2C60%27%3B%0D%0A++++%24txtUser.Width+%3D+300%3B%0D%0A%0D%0A++++%24lblPass+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblPass.Text+%3D+%22Password%3A%22%3B%0D%0A++++%24lblPass.Location+%3D+%2720%2C100%27%3B%0D%0A++++%24lblPass.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtPass+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtPass.Location+%3D+%2720%2C120%27%3B%0D%0A++++%24txtPass.Width+%3D+300%3B%0D%0A++++%24txtPass.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24lblConfirm+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblConfirm.Text+%3D+%22Confirm+Password%3A%22%3B%0D%0A++++%24lblConfirm.Location+%3D+%2720%2C160%27%3B%0D%0A++++%24lblConfirm.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtConfirm+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtConfirm.Location+%3D+%2720%2C180%27%3B%0D%0A++++%24txtConfirm.Width+%3D+300%3B%0D%0A++++%24txtConfirm.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24btnOK+%3D+New-Object+System.Windows.Forms.Button%3B%0D%0A++++%24btnOK.Text+%3D+%22Create%22%3B%0D%0A++++%24btnOK.Location+%3D+%27130%2C220%27%3B%0D%0A++++%24btnOK.DialogResult+%3D+%5BSystem.Windows.Forms.DialogResult%5D%3A%3AOK%3B%0D%0A%0D%0A++++%24form.AcceptButton+%3D+%24btnOK%3B%0D%0A%0D%0A++++%24form.Controls.AddRange%28%40%28%24lblMsg%2C%24lblUser%2C%24txtUser%2C%24lblPass%2C%24txtPass%2C%24lblConfirm%2C%24txtConfirm%2C%24btnOK%29%29%3B%0D%0A%0D%0A++++%24Error+%3D+%24False%3B%0D%0A++++%24ErrorMsg+%3D+%22%22%3B%0D%0A%0D%0A++++if+%28%24form.ShowDialog%28%29+-ne+%27OK%27%29+%7B%0D%0A%09%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22User+cancelled.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++if+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24txtUser.Text%29%29+%7B%0D%0A%09%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+cannot+be+empty.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++if+%28%28Get-LocalUser%29.Name+-contains+%24txtUser.Text%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+%27%24%28%24txtUser.Text%29%27+is+already+in+use.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++if+%28%24txtPass.Text+-ne+%24txtConfirm.Text%29+%7B%0D%0A%09%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Passwords+do+not+match.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++return+%40%7B%0D%0A++++++++Username+%3D+%24txtUser.Text%3B%0D%0A++++++++Password+%3D+%24txtPass.Text%3B%0D%0A%09Error+%3D+%24Error%3B%0D%0A%09ErrorMsg+%3D+%24ErrorMsg%3B%0D%0A++++%7D%3B%0D%0A%7D%0D%0A%0D%0Atry+%7B%0D%0A++++%24promptMsg+%3D+%22%22%3B%0D%0A++++do+%7B%0D%0A++++++++%24result+%3D+Show-UserPrompt+%24promptMsg%3B%0D%0A++++++++%24promptMsg+%3D+%24result.ErrorMsg%3B%0D%0A++++++++Write-Output+%22%24promptMsg%22%3B%0D%0A++++%7D+while+%28%24result.Error%29%3B%0D%0A%0D%0A++++Write-Output+%22Creating+user+%27%24%28%24result.Username%29%27%22%3B%0D%0A%0D%0A++++if+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24result.Password%29%29+%7B%0D%0A%09Write-Output+%22Leaving+password+blank.%22%3B%0D%0A++++++++New-LocalUser+-Name+%24result.Username+-NoPassword+-AccountNeverExpires+-FullName+%24result.Username+-ErrorAction+Stop+%7C+Set-LocalUser+-PasswordNeverExpires%3A%24True+-ErrorAction+Stop%3B%0D%0A++++%7D+else+%7B%0D%0A++++++++New-LocalUser+-Name+%24result.Username+-Password+%24%28ConvertTo-SecureString+%24result.Password+-AsPlainText+-Force%29+-PasswordNeverExpires+-AccountNeverExpires+-FullName+%24result.Username+-ErrorAction+Stop%3B%0D%0A++++%7D%0D%0A%0D%0A++++Add-LocalGroupMember+-Group+%22Administrators%22+-Member+%24result.Username+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Disable-LocalUser+-Name+%22Administrator%22+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Write-Output+%22User+created.+Administrator+disabled.+Please+Log+out.%22%3B%0D%0A%0D%0A++++Start-Sleep+5%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++exit+1%3B%0D%0A%7D%0D%0A&FirstLogonScriptType2=Ps1&WdacMode=Skip&AppLockerMode=Skip&ComponentContent0=%3CPersistAllDeviceInstalls%3Etrue%3C%2FPersistAllDeviceInstalls%3E&Component0=Microsoft-Windows-PnpSysprep-generalize-->
+	<settings pass="offlineServicing"></settings>
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UILanguage>en-US</UILanguage>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserData>
+				<ProductKey>
+					<Key>00000-00000-00000-00000-00000</Key>
+					<WillShowUI>OnError</WillShowUI>
+				</ProductKey>
+				<AcceptEula>true</AcceptEula>
+			</UserData>
+			<UseConfigurationSet>false</UseConfigurationSet>
+		</component>
+	</settings>
+	<settings pass="generalize">
+		<component name="Microsoft-Windows-PnpSysprep" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<PersistAllDeviceInstalls>true</PersistAllDeviceInstalls>
+		</component>
+	</settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<ComputerName>TEMPNAME</ComputerName>
+		</component>
+		<component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<RunSynchronous>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<Path>powershell.exe -WindowStyle "Normal" -NoProfile -Command "$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Path>powershell.exe -WindowStyle "Normal" -ExecutionPolicy "Unrestricted" -NoProfile -File "C:\Windows\Setup\Scripts\Specialize.ps1"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>3</Order>
+					<Path>reg.exe load "HKU\DefaultUser" "C:\Users\Default\NTUSER.DAT"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>powershell.exe -WindowStyle "Normal" -ExecutionPolicy "Unrestricted" -NoProfile -File "C:\Windows\Setup\Scripts\DefaultUser.ps1"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>reg.exe unload "HKU\DefaultUser"</Path>
+				</RunSynchronousCommand>
+			</RunSynchronous>
+		</component>
+	</settings>
+	<settings pass="auditSystem"></settings>
+	<settings pass="auditUser"></settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<InputLocale>0409:00000409</InputLocale>
+			<SystemLocale>en-US</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>en-US</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserAccounts>
+				<AdministratorPassword>
+					<Value></Value>
+					<PlainText>true</PlainText>
+				</AdministratorPassword>
+			</UserAccounts>
+			<AutoLogon>
+				<Username>Administrator</Username>
+				<Enabled>true</Enabled>
+				<LogonCount>1</LogonCount>
+				<Password>
+					<Value></Value>
+					<PlainText>true</PlainText>
+				</Password>
+			</AutoLogon>
+			<OOBE>
+				<ProtectYourPC>3</ProtectYourPC>
+				<HideEULAPage>true</HideEULAPage>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<HideOnlineAccountScreens>false</HideOnlineAccountScreens>
+			</OOBE>
+			<FirstLogonCommands>
+				<SynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<CommandLine>powershell.exe -WindowStyle "Normal" -ExecutionPolicy "Unrestricted" -NoProfile -File "C:\Windows\Setup\Scripts\FirstLogon.ps1"</CommandLine>
+				</SynchronousCommand>
+			</FirstLogonCommands>
+		</component>
+	</settings>
+	<Extensions xmlns="https://schneegans.de/windows/unattend-generator/">
+		<ExtractScript>
+param(
+    [xml] $Document
+);
+
+foreach( $file in $Document.unattend.Extensions.File ) {
+    $path = [System.Environment]::ExpandEnvironmentVariables( $file.GetAttribute( 'path' ) );
+    mkdir -Path( $path | Split-Path -Parent ) -ErrorAction 'SilentlyContinue';
+    $encoding = switch( [System.IO.Path]::GetExtension( $path ) ) {
+        { $_ -in '.ps1', '.xml' } { [System.Text.Encoding]::UTF8; }
+        { $_ -in '.reg', '.vbs', '.js' } { [System.Text.UnicodeEncoding]::new( $false, $true ); }
+        default { [System.Text.Encoding]::Default; }
+    };
+    $bytes = $encoding.GetPreamble() + $encoding.GetBytes( $file.InnerText.Trim() );
+    [System.IO.File]::WriteAllBytes( $path, $bytes );
+}
+		</ExtractScript>
+		<File path="C:\Windows\Setup\Scripts\GetComputerName.ps1">
+Add-Type -AssemblyName 'Microsoft.VisualBasic';
+return [Microsoft.VisualBasic.Interaction]::InputBox( 'Enter a valid computer name:', 'Computer name', '' );
+		</File>
+		<File path="C:\Windows\Setup\Scripts\SetComputerName.ps1">
+$ErrorActionPreference = 'Stop';
+Set-StrictMode -Version 'Latest';
+&amp; {
+	$newName = ( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\ComputerName.txt' -Raw ).Trim();
+	if( [string]::IsNullOrWhitespace( $newName ) ) {
+		throw "No computer name was provided.";
+	}
+
+	$keys = @(
+		@{
+			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName';
+			Name = 'ComputerName';
+		};
+		@{
+			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters';
+			Name = 'Hostname';
+		};
+		@{
+			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters';
+			Name = 'NV Hostname';
+		};
+	);
+
+	while( $true ) {
+		foreach( $key in $keys ) {
+			Set-ItemProperty @key -Type 'String' -Value $newName;
+		}
+		Start-Sleep -Milliseconds 50;
+	}
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; 'C:\Windows\Setup\Scripts\SetComputerName.log';
+		</File>
+		<File path="C:\Windows\Setup\Scripts\RemovePackages.ps1">
+$selectors = @(
+	'Microsoft.WindowsFeedbackHub';
+	'Microsoft.GetHelp';
+	'Microsoft.Getstarted';
+	'Microsoft.OutlookForWindows';
+	'Microsoft.SkypeApp';
+	'Microsoft.MicrosoftSolitaireCollection';
+	'Microsoft.Xbox.TCUI';
+	'Microsoft.XboxApp';
+	'Microsoft.XboxGameOverlay';
+	'Microsoft.XboxGamingOverlay';
+	'Microsoft.XboxIdentityProvider';
+	'Microsoft.XboxSpeechToTextOverlay';
+	'Microsoft.GamingApp';
+);
+$getCommand = {
+  Get-AppxProvisionedPackage -Online;
+};
+$filterCommand = {
+  $_.DisplayName -eq $selector;
+};
+$removeCommand = {
+  [CmdletBinding()]
+  param(
+    [Parameter( Mandatory, ValueFromPipeline )]
+    $InputObject
+  );
+  process {
+    $InputObject | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction 'Continue';
+  }
+};
+$type = 'Package';
+$logfile = 'C:\Windows\Setup\Scripts\RemovePackages.log';
+&amp; {
+	$installed = &amp; $getCommand;
+	foreach( $selector in $selectors ) {
+		$result = [ordered] @{
+			Selector = $selector;
+		};
+		$found = $installed | Where-Object -FilterScript $filterCommand;
+		if( $found ) {
+			$result.Output = $found | &amp; $removeCommand;
+			if( $? ) {
+				$result.Message = "$type removed.";
+			} else {
+				$result.Message = "$type not removed.";
+				$result.Error = $Error[0];
+			}
+		} else {
+			$result.Message = "$type not installed.";
+		}
+		$result | ConvertTo-Json -Depth 3 -Compress;
+	}
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; $logfile;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\TaskbarLayoutModification.xml">
+&lt;LayoutModificationTemplate xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification" xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout" Version="1"&gt;
+	&lt;CustomTaskbarLayoutCollection PinListPlacement="Replace"&gt;
+		&lt;defaultlayout:TaskbarLayout&gt;
+			&lt;taskbar:TaskbarPinList&gt;
+				&lt;taskbar:DesktopApp DesktopApplicationID="Microsoft.Windows.Explorer" PinGeneration="1" /&gt;
+				&lt;taskbar:DesktopApp DesktopApplicationID="Chrome" PinGeneration="1" /&gt;
+				&lt;taskbar:DesktopApp DesktopApplicationID="{6D809377-6AF0-444B-8957-A3773F02200E}\Notepad++\notepad++.exe" PinGeneration="1" /&gt;
+			&lt;/taskbar:TaskbarPinList&gt;
+		&lt;/defaultlayout:TaskbarLayout&gt;
+	&lt;/CustomTaskbarLayoutCollection&gt;
+&lt;/LayoutModificationTemplate&gt;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\UnlockStartLayout.vbs">
+HKU = &amp;H80000003
+Set reg = GetObject("winmgmts://./root/default:StdRegProv")
+Set fso = CreateObject("Scripting.FileSystemObject")
+
+If reg.EnumKey(HKU, "", sids) = 0 Then
+	If Not IsNull(sids) Then
+		For Each sid In sids
+			key = sid + "\Software\Policies\Microsoft\Windows\Explorer"
+			name = "LockedStartLayout"
+			If reg.GetDWORDValue(HKU, key, name, existing) = 0 Then
+				reg.SetDWORDValue HKU, key, name, 0
+			End If
+		Next
+	End If
+End If
+		</File>
+		<File path="C:\Windows\Setup\Scripts\UnlockStartLayout.xml">
+&lt;Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"&gt;
+	&lt;Triggers&gt;
+		&lt;EventTrigger&gt;
+			&lt;Enabled&gt;true&lt;/Enabled&gt;
+			&lt;Subscription&gt;&amp;lt;QueryList&amp;gt;&amp;lt;Query Id="0" Path="Application"&amp;gt;&amp;lt;Select Path="Application"&amp;gt;*[System[Provider[@Name='UnattendGenerator'] and EventID=1]]&amp;lt;/Select&amp;gt;&amp;lt;/Query&amp;gt;&amp;lt;/QueryList&amp;gt;&lt;/Subscription&gt;
+		&lt;/EventTrigger&gt;
+	&lt;/Triggers&gt;
+	&lt;Principals&gt;
+		&lt;Principal id="Author"&gt;
+			&lt;UserId&gt;S-1-5-18&lt;/UserId&gt;
+			&lt;RunLevel&gt;LeastPrivilege&lt;/RunLevel&gt;
+		&lt;/Principal&gt;
+	&lt;/Principals&gt;
+	&lt;Settings&gt;
+		&lt;MultipleInstancesPolicy&gt;IgnoreNew&lt;/MultipleInstancesPolicy&gt;
+		&lt;DisallowStartIfOnBatteries&gt;false&lt;/DisallowStartIfOnBatteries&gt;
+		&lt;StopIfGoingOnBatteries&gt;false&lt;/StopIfGoingOnBatteries&gt;
+		&lt;AllowHardTerminate&gt;true&lt;/AllowHardTerminate&gt;
+		&lt;StartWhenAvailable&gt;false&lt;/StartWhenAvailable&gt;
+		&lt;RunOnlyIfNetworkAvailable&gt;false&lt;/RunOnlyIfNetworkAvailable&gt;
+		&lt;IdleSettings&gt;
+			&lt;StopOnIdleEnd&gt;true&lt;/StopOnIdleEnd&gt;
+			&lt;RestartOnIdle&gt;false&lt;/RestartOnIdle&gt;
+		&lt;/IdleSettings&gt;
+		&lt;AllowStartOnDemand&gt;true&lt;/AllowStartOnDemand&gt;
+		&lt;Enabled&gt;true&lt;/Enabled&gt;
+		&lt;Hidden&gt;false&lt;/Hidden&gt;
+		&lt;RunOnlyIfIdle&gt;false&lt;/RunOnlyIfIdle&gt;
+		&lt;WakeToRun&gt;false&lt;/WakeToRun&gt;
+		&lt;ExecutionTimeLimit&gt;PT72H&lt;/ExecutionTimeLimit&gt;
+		&lt;Priority&gt;7&lt;/Priority&gt;
+	&lt;/Settings&gt;
+	&lt;Actions Context="Author"&gt;
+		&lt;Exec&gt;
+			&lt;Command&gt;C:\Windows\System32\wscript.exe&lt;/Command&gt;
+			&lt;Arguments&gt;C:\Windows\Setup\Scripts\UnlockStartLayout.vbs&lt;/Arguments&gt;
+		&lt;/Exec&gt;
+	&lt;/Actions&gt;
+&lt;/Task&gt;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\SetStartPins.ps1">
+$json = '{"pinnedList":[]}';
+if( [System.Environment]::OSVersion.Version.Build -lt 20000 ) {
+	return;
+}
+$key = 'Registry::HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start';
+New-Item -Path $key -ItemType 'Directory' -ErrorAction 'SilentlyContinue';
+Set-ItemProperty -LiteralPath $key -Name 'ConfigureStartPins' -Value $json -Type 'String';
+		</File>
+		<File path="C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml">
+&lt;LayoutModificationTemplate Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"&gt;
+	&lt;LayoutOptions StartTileGroupCellWidth="6" /&gt;
+	&lt;DefaultLayoutOverride&gt;
+		&lt;StartLayoutCollection&gt;
+			&lt;StartLayout GroupCellWidth="6" xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" /&gt;
+		&lt;/StartLayoutCollection&gt;
+	&lt;/DefaultLayoutOverride&gt;
+&lt;/LayoutModificationTemplate&gt;
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-01.ps1">
+New-NetFirewallRule -DisplayName 'ICMPv4' -Profile 'Any' -Protocol 'ICMPv4' -Action 'Allow';
+New-NetFirewallRule -DisplayName 'ICMPv6' -Profile 'Any' -Protocol 'ICMPv6' -Action 'Allow';
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-02.ps1">
+try{
+  Write-Output "Waiting to install apps";
+  Start-Sleep 300;
+  Write-Output "Installing Chocolatey";
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+  iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) -ErrorAction Stop;
+  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/chocopackages.config -OutFile "$env:TEMP\packages.config" -ErrorAction Stop;
+  choco install -y "$env:TEMP\packages.config" --limit-output --no-progress --log-file="$env:WINDIR\Setup\Scripts\chocolatey.apps.log";
+  Remove-Item -Path "$env:TEMP\packages.config" -Force;
+} catch {
+  Write-Error "Exception: $($_.Exception.Message)";
+  exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
+try{
+  Start-Sleep 30;
+  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/appassociations.xml -OutFile "$env:TEMP\appassociations.xml" -ErrorAction Stop;
+  Dism /Online /Import-DefaultAppAssociations:"$env:TEMP\appassociations.xml";
+  Remove-Item -Path "$env:TEMP\appassociations.xml" -Force;
+} catch {
+  Write-Error "Exception: $($_.Exception.Message)";
+  exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-04.ps1">
+Add-Type -AssemblyName System.Windows.Forms;
+Add-Type -AssemblyName System.Drawing;
+
+function Show-UserPrompt {
+    param([string]$Msg = "");
+
+    $form = New-Object System.Windows.Forms.Form;
+    $form.Text = "Create Administrator Account";
+    $form.Size = New-Object System.Drawing.Size(360,300);
+    $form.StartPosition = "CenterScreen";
+    $form.Topmost = $true;
+
+    $lblMsg = New-Object System.Windows.Forms.Label;
+    $lblMsg.Text = $Msg;
+    $lblMsg.Location = '20,10';
+    $lblMsg.AutoSize = $true;
+    $lblMsg.ForeColor = "Red";
+
+    $lblUser = New-Object System.Windows.Forms.Label;
+    $lblUser.Text = "Username:";
+    $lblUser.Location = '20,40';
+    $lblUser.AutoSize = $true;
+
+    $txtUser = New-Object System.Windows.Forms.TextBox;
+    $txtUser.Location = '20,60';
+    $txtUser.Width = 300;
+
+    $lblPass = New-Object System.Windows.Forms.Label;
+    $lblPass.Text = "Password:";
+    $lblPass.Location = '20,100';
+    $lblPass.AutoSize = $true;
+
+    $txtPass = New-Object System.Windows.Forms.TextBox;
+    $txtPass.Location = '20,120';
+    $txtPass.Width = 300;
+    $txtPass.UseSystemPasswordChar = $true;
+
+    $lblConfirm = New-Object System.Windows.Forms.Label;
+    $lblConfirm.Text = "Confirm Password:";
+    $lblConfirm.Location = '20,160';
+    $lblConfirm.AutoSize = $true;
+
+    $txtConfirm = New-Object System.Windows.Forms.TextBox;
+    $txtConfirm.Location = '20,180';
+    $txtConfirm.Width = 300;
+    $txtConfirm.UseSystemPasswordChar = $true;
+
+    $btnOK = New-Object System.Windows.Forms.Button;
+    $btnOK.Text = "Create";
+    $btnOK.Location = '130,220';
+    $btnOK.DialogResult = [System.Windows.Forms.DialogResult]::OK;
+
+    $form.AcceptButton = $btnOK;
+
+    $form.Controls.AddRange(@($lblMsg,$lblUser,$txtUser,$lblPass,$txtPass,$lblConfirm,$txtConfirm,$btnOK));
+
+    $Error = $False;
+    $ErrorMsg = "";
+
+    if ($form.ShowDialog() -ne 'OK') {
+	$Error = $True;
+        $ErrorMsg = "User cancelled.";
+    }
+
+    if ([string]::IsNullOrWhiteSpace($txtUser.Text)) {
+	$Error = $True;
+        $ErrorMsg = "Username cannot be empty.";
+    }
+
+    if ((Get-LocalUser).Name -contains $txtUser.Text) {
+        $Error = $True;
+        $ErrorMsg = "Username '$($txtUser.Text)' is already in use.";
+    }
+
+    if ($txtPass.Text -ne $txtConfirm.Text) {
+	$Error = $True;
+        $ErrorMsg = "Passwords do not match.";
+    }
+
+    return @{
+        Username = $txtUser.Text;
+        Password = $txtPass.Text;
+	Error = $Error;
+	ErrorMsg = $ErrorMsg;
+    };
+}
+
+try {
+    $promptMsg = "";
+    do {
+        $result = Show-UserPrompt $promptMsg;
+        $promptMsg = $result.ErrorMsg;
+        Write-Output "$promptMsg";
+    } while ($result.Error);
+
+    Write-Output "Creating user '$($result.Username)'";
+
+    if ([string]::IsNullOrWhiteSpace($result.Password)) {
+	Write-Output "Leaving password blank.";
+        New-LocalUser -Name $result.Username -NoPassword -AccountNeverExpires -FullName $result.Username -ErrorAction Stop | Set-LocalUser -PasswordNeverExpires:$True -ErrorAction Stop;
+    } else {
+        New-LocalUser -Name $result.Username -Password $(ConvertTo-SecureString $result.Password -AsPlainText -Force) -PasswordNeverExpires -AccountNeverExpires -FullName $result.Username -ErrorAction Stop;
+    }
+
+    Add-LocalGroupMember -Group "Administrators" -Member $result.Username -ErrorAction Stop;
+
+    Disable-LocalUser -Name "Administrator" -ErrorAction Stop;
+
+    Write-Output "User created. Administrator disabled. Please Log out.";
+
+    Start-Sleep 5;
+
+} catch {
+    Write-Error "Exception Occurred: $($_.Exception.Message)";
+    exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
+$scripts = @(
+	{
+		&amp; 'C:\Windows\Setup\Scripts\GetComputerName.ps1' &gt; 'C:\Windows\Setup\Scripts\ComputerName.txt';
+		Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-ExecutionPolicy "Unrestricted" -NoProfile -File "C:\Windows\Setup\Scripts\SetComputerName.ps1"' -WindowStyle 'Hidden';
+		Start-Sleep -Seconds 10;
+	};
+	{
+		Remove-Item -LiteralPath 'Registry::HKLM\Software\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate' -Force -ErrorAction 'SilentlyContinue';
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\RemovePackages.ps1';
+	};
+	{
+		net.exe accounts /maxpwage:UNLIMITED;
+	};
+	{
+		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f;
+		[System.Diagnostics.EventLog]::CreateEventSource( 'UnattendGenerator', 'Application' );
+	};
+	{
+		Register-ScheduledTask -TaskName 'UnlockStartLayout' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UnlockStartLayout.xml' -Raw );
+	};
+	{
+		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
+	};
+	{
+		Remove-Item -LiteralPath 'C:\Users\Public\Desktop\Microsoft Edge.lnk' -ErrorAction 'SilentlyContinue' -Verbose;
+	};
+	{
+		Set-ExecutionPolicy -Scope 'LocalMachine' -ExecutionPolicy 'RemoteSigned' -Force;
+	};
+	{
+		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f;
+	};
+	{
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f;
+	};
+	{
+		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\BitLocker" /v "PreventDeviceEncryption" /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKLM\Software\Policies\Microsoft\Edge" /v HideFirstRunExperience /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKLM\Software\Policies\Microsoft\Edge\Recommended" /v BackgroundModeEnabled /t REG_DWORD /d 0 /f;
+		reg.exe add "HKLM\Software\Policies\Microsoft\Edge\Recommended" /v StartupBoostEnabled /t REG_DWORD /d 0 /f;
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\SetStartPins.ps1';
+	};
+	{
+		reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\unattend-01.ps1';
+	};
+);
+
+&amp; {
+  [float] $complete = 0;
+  [float] $increment = 100 / $scripts.Count;
+  foreach( $script in $scripts ) {
+    Write-Progress -Activity 'Running scripts to customize your Windows installation. Do not close this window.' -PercentComplete $complete;
+    '*** Will now execute command &#xAB;{0}&#xBB;.' -f $(
+      $str = $script.ToString().Trim() -replace '\s+', ' ';
+      $max = 100;
+      if( $str.Length -le $max ) {
+        $str;
+      } else {
+        $str.Substring( 0, $max - 1 ) + '&#x2026;';
+      }
+    );
+    $start = [datetime]::Now;
+    &amp; $script;
+    '*** Finished executing command after {0:0} ms.' -f [datetime]::Now.Subtract( $start ).TotalMilliseconds;
+    "`r`n" * 3;
+    $complete += $increment;
+  }
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; "C:\Windows\Setup\Scripts\Specialize.log";
+		</File>
+		<File path="C:\Windows\Setup\Scripts\UserOnce.ps1">
+$scripts = @(
+	{
+		[System.Diagnostics.EventLog]::WriteEntry( 'UnattendGenerator', "User '$env:USERNAME' has requested to unlock the Start menu layout.", [System.Diagnostics.EventLogEntryType]::Information, 1 );
+	};
+	{
+		Remove-Item -LiteralPath "${env:USERPROFILE}\Desktop\Microsoft Edge.lnk" -ErrorAction 'SilentlyContinue' -Verbose;
+	};
+	{
+		reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /f;
+	};
+	{
+		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'LaunchTo' -Type 'DWord' -Value 1;
+	};
+	{
+		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value 1;
+	};
+	{
+		New-Item -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Force;
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{5399e694-6ce5-4d6c-8fce-1d8870fdcba0}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{b4bfcc3a-db2c-424c-b029-7fe99a87c641}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{a8cdff1c-4878-43be-b5fd-f8091c1c60d0}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{374de290-123f-4565-9164-39c4925e467b}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{1cf1260c-4dd0-4ebb-811f-33c572699fde}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{f02c1a0d-be21-4350-88b0-7367fc96ef3c}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{3add1653-eb32-4cb0-bbd7-dfa0abb5acca}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{645ff040-5081-101b-9f08-00aa002f954e}' -Value 0 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{20d04fe0-3aea-1069-a2d8-08002b30309d}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{59031a47-3f72-44a7-89c5-5595fe6b30ee}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu' -Name '{a0953c92-50dc-43bf-be83-3742fed03c9c}' -Value 1 -Type 'DWord';
+		New-Item -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Force;
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{5399e694-6ce5-4d6c-8fce-1d8870fdcba0}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{b4bfcc3a-db2c-424c-b029-7fe99a87c641}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{a8cdff1c-4878-43be-b5fd-f8091c1c60d0}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{374de290-123f-4565-9164-39c4925e467b}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{1cf1260c-4dd0-4ebb-811f-33c572699fde}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{f02c1a0d-be21-4350-88b0-7367fc96ef3c}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{3add1653-eb32-4cb0-bbd7-dfa0abb5acca}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{645ff040-5081-101b-9f08-00aa002f954e}' -Value 0 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{20d04fe0-3aea-1069-a2d8-08002b30309d}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{59031a47-3f72-44a7-89c5-5595fe6b30ee}' -Value 1 -Type 'DWord';
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel' -Name '{a0953c92-50dc-43bf-be83-3742fed03c9c}' -Value 1 -Type 'DWord';
+	};
+	{
+		Set-ItemProperty -Path 'Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start' -Name 'VisiblePlaces' -Value $( [convert]::FromBase64String('vCSKFAzWiUKggG7Zu6JIgkqwvXRK+WhPi9ZDmAcdqLyGCHNSqlFDQp97J3ZYRlnU') ) -Type 'Binary';
+	};
+	{
+		Get-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' | Where-Object -FilterScript {
+			$_.SessionId -eq ( Get-Process -Id $PID ).SessionId;
+		} | Stop-Process -Force;
+	};
+);
+
+&amp; {
+  [float] $complete = 0;
+  [float] $increment = 100 / $scripts.Count;
+  foreach( $script in $scripts ) {
+    Write-Progress -Activity 'Running scripts to configure this user account. Do not close this window.' -PercentComplete $complete;
+    '*** Will now execute command &#xAB;{0}&#xBB;.' -f $(
+      $str = $script.ToString().Trim() -replace '\s+', ' ';
+      $max = 100;
+      if( $str.Length -le $max ) {
+        $str;
+      } else {
+        $str.Substring( 0, $max - 1 ) + '&#x2026;';
+      }
+    );
+    $start = [datetime]::Now;
+    &amp; $script;
+    '*** Finished executing command after {0:0} ms.' -f [datetime]::Now.Subtract( $start ).TotalMilliseconds;
+    "`r`n" * 3;
+    $complete += $increment;
+  }
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; "$env:TEMP\UserOnce.log";
+		</File>
+		<File path="C:\Windows\Setup\Scripts\DefaultUser.ps1">
+$scripts = @(
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v AppCaptureEnabled /t REG_DWORD /d 0 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v "StartLayoutFile" /t REG_SZ /d "C:\Windows\Setup\Scripts\TaskbarLayoutModification.xml" /f;
+		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v "LockedStartLayout" /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d 0 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d 1 /f;
+	};
+	{
+		$names = @(
+		  'ContentDeliveryAllowed';
+		  'FeatureManagementEnabled';
+		  'OEMPreInstalledAppsEnabled';
+		  'PreInstalledAppsEnabled';
+		  'PreInstalledAppsEverEnabled';
+		  'SilentInstalledAppsEnabled';
+		  'SoftLandingEnabled';
+		  'SubscribedContentEnabled';
+		  'SubscribedContent-310093Enabled';
+		  'SubscribedContent-338387Enabled';
+		  'SubscribedContent-338388Enabled';
+		  'SubscribedContent-338389Enabled';
+		  'SubscribedContent-338393Enabled';
+		  'SubscribedContent-353694Enabled';
+		  'SubscribedContent-353696Enabled';
+		  'SubscribedContent-353698Enabled';
+		  'SystemPaneSuggestionsEnabled';
+		);
+		
+		foreach( $name in $names ) {
+		  reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v $name /t REG_DWORD /d 0 /f;
+		}
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarAl /t REG_DWORD /d 0 /f;
+	};
+	{
+		$params = @{
+		  LiteralPath = 'Registry::HKU\DefaultUser\Control Panel\Mouse';
+		  Type = 'String';
+		  Value = 0;
+		  Force = $true;
+		};
+		Set-ItemProperty @params -Name 'MouseSpeed';
+		Set-ItemProperty @params -Name 'MouseThreshold1';
+		Set-ItemProperty @params -Name 'MouseThreshold2';
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle \""Normal\"" -ExecutionPolicy \""Unrestricted\"" -NoProfile -File \""C:\Windows\Setup\Scripts\UserOnce.ps1\""" /f;
+	};
+);
+
+&amp; {
+  [float] $complete = 0;
+  [float] $increment = 100 / $scripts.Count;
+  foreach( $script in $scripts ) {
+    Write-Progress -Activity 'Running scripts to modify the default user&#x2019;&#x2019;s registry hive. Do not close this window.' -PercentComplete $complete;
+    '*** Will now execute command &#xAB;{0}&#xBB;.' -f $(
+      $str = $script.ToString().Trim() -replace '\s+', ' ';
+      $max = 100;
+      if( $str.Length -le $max ) {
+        $str;
+      } else {
+        $str.Substring( 0, $max - 1 ) + '&#x2026;';
+      }
+    );
+    $start = [datetime]::Now;
+    &amp; $script;
+    '*** Finished executing command after {0:0} ms.' -f [datetime]::Now.Subtract( $start ).TotalMilliseconds;
+    "`r`n" * 3;
+    $complete += $increment;
+  }
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; "C:\Windows\Setup\Scripts\DefaultUser.log";
+		</File>
+		<File path="C:\Windows\Setup\Scripts\FirstLogon.ps1">
+$scripts = @(
+	{
+		Set-ItemProperty -LiteralPath 'Registry::HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'AutoLogonCount' -Type 'DWord' -Force -Value 0;
+	};
+	{
+		cmd.exe /c "rmdir C:\Windows.old";
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\unattend-02.ps1';
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\unattend-03.ps1';
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\unattend-04.ps1';
+	};
+	{
+		Remove-Item -LiteralPath @(
+		  'C:\Windows\Panther\unattend.xml';
+		  'C:\Windows\Panther\unattend-original.xml';
+		  'C:\Windows\Setup\Scripts\Wifi.xml';
+		) -Force -ErrorAction 'SilentlyContinue' -Verbose;
+	};
+);
+
+&amp; {
+  [float] $complete = 0;
+  [float] $increment = 100 / $scripts.Count;
+  foreach( $script in $scripts ) {
+    Write-Progress -Activity 'Running scripts to finalize your Windows installation. Do not close this window.' -PercentComplete $complete;
+    '*** Will now execute command &#xAB;{0}&#xBB;.' -f $(
+      $str = $script.ToString().Trim() -replace '\s+', ' ';
+      $max = 100;
+      if( $str.Length -le $max ) {
+        $str;
+      } else {
+        $str.Substring( 0, $max - 1 ) + '&#x2026;';
+      }
+    );
+    $start = [datetime]::Now;
+    &amp; $script;
+    '*** Finished executing command after {0:0} ms.' -f [datetime]::Now.Subtract( $start ).TotalMilliseconds;
+    "`r`n" * 3;
+    $complete += $increment;
+  }
+} *&gt;&amp;1 | Out-String -Width 1KB -Stream &gt;&gt; "C:\Windows\Setup\Scripts\FirstLogon.log";
+		</File>
+	</Extensions>
+</unattend>
