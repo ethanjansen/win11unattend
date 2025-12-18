@@ -82,7 +82,6 @@ unattend.xml generated using [schneegans.de unattend generator](https://schneega
       - Does not allow using Administrator or other pre-existing account
     - Add new user to Administrators group
     - Disable Administrator account
-    - Remove unattend.xml and unattend-original.xml (scripts and logs are kept in C:\Windows\Setup\Scripts)
   - First Logon (created user):
     - Revert right-click context menu to Windows 10 style
     - Set File Explorer to launch to This PC
