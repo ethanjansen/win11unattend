@@ -15,7 +15,7 @@ Enjoy!
 Recommend using with a fresh install of Windows 11 Pro or Enterprise (LTSC/LTSC IoT).
 Should also work with any install of Windows 11 (including from an OEM), but may not remove all bloatware.
 This may also work with Windows 10 (unsupported/untested).
-DO NOT use outside of OOBE.
+**DO NOT use outside of OOBE or on a Windows 11 upgrade, this will result in data loss--YOU HAVE BEEN WARNED.**
 
 unattend.xml generated using [schneegans.de unattend generator](https://schneegans.de/windows/unattend-generator).
 
