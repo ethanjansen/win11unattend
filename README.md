@@ -6,9 +6,9 @@ From the OOBE Screen press Shift + F10
 curl -L ethanjansen.github.io/win11unattend | powershell -Command -
 ```
 
-This will skip the entire OOBE and perform an unattended setup for Windows 11, only asking a few questions for computer name (early in setup) and local account creation (towards end of process).
+This will skip the entire OOBE and perform an unattended setup for Windows 11, only asking a few questions for computer name and local account creation (early in setup).
 Entire process requires internet (not just for downloading the script).
-Please wait for all Powershell windows to close after creating user, then log out and back in, and wait again for all Powershell windows to close (~30 seconds) before using your computer.
+After login, please wait for all Powershell windows to close (~30 seconds) before using your computer.
 Remember to check for Windows updates.
 Enjoy!
 
@@ -50,6 +50,14 @@ unattend.xml generated using [schneegans.de unattend generator](https://schneega
     - Disable Edge background mode and startup
     - Disable Sticky Keys
     - Add ICMP v4/v6 rules to firewall to allow ping response
+    - **\[Prompt\]** Set username and password
+      - Username must match `^(?![._-]$)(?!.*\.$)[A-Za-z0-9._-]{1,20}$`
+        - 1-20 characters
+        - Can contain lowercase/uppercase letters, numbers, periods, underscores, and hyphens
+        - Must not be only a single period, underscore, or hyphen
+        - Must not end with a period
+      - Accepts blank passwords
+      - Does not allow using Administrator or other pre-existing account
     - Set default apps on taskbar:
       - File Explorer
       - Chrome
@@ -72,16 +80,10 @@ unattend.xml generated using [schneegans.de unattend generator](https://schneega
       - Sumatra PDF
       - Notepad++
     - Set [default app associations](./appassociations.xml) (this cannot set a default browser)
-    - **\[Prompt\]** Set username and password
-      - Username must match `^(?![._-]$)(?!.*\.$)[A-Za-z0-9._-]{1,20}$`
-        - 1-20 characters
-        - Can contain lowercase/uppercase letters, numbers, periods, underscores, and hyphens
-        - Must not be only a single period, underscore, or hyphen
-        - Must not end with a period
-      - Accepts blank passwords
-      - Does not allow using Administrator or other pre-existing account
+    - Create new user
     - Add new user to Administrators group
     - Disable Administrator account
+    - Automatic reboot after ~10 minutes (to avoid a possible black screen glitch)
   - First Logon (created user):
     - Revert right-click context menu to Windows 10 style
     - Set File Explorer to launch to This PC
