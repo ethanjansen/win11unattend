@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&GeoLocation=244&ProcessorArchitecture=amd64&KeepSensitiveFiles=true&ComputerNameMode=Script&ComputerNameScript=Add-Type+-AssemblyName+System.Windows.Forms%3B%0D%0AAdd-Type+-AssemblyName+System.Drawing%3B%0D%0A%0D%0Afunction+Show-Prompt+%7B%0D%0A++++param%28%5Bstring%5D%24Msg+%3D+%22%22%29%3B%0D%0A%0D%0A++++%24form+%3D+New-Object+System.Windows.Forms.Form%3B%0D%0A++++%24form.Text+%3D+%22Set+Computer+Name%22%3B%0D%0A++++%24form.Size+%3D+New-Object+System.Drawing.Size%28360%2C180%29%3B%0D%0A++++%24form.StartPosition+%3D+%22CenterScreen%22%3B%0D%0A++++%24form.Topmost+%3D+%24true%3B%0D%0A%0D%0A++++%24lblMsg+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblMsg.Text+%3D+%24Msg%3B%0D%0A++++%24lblMsg.Location+%3D+%2720%2C10%27%3B%0D%0A++++%24lblMsg.AutoSize+%3D+%24true%3B%0D%0A++++%24lblMsg.ForeColor+%3D+%22Red%22%3B%0D%0A%0D%0A++++%24lblComputername+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblComputername.Text+%3D+%22Computer+Name%3A%22%3B%0D%0A++++%24lblComputername.Location+%3D+%2720%2C40%27%3B%0D%0A++++%24lblComputername.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtComputername+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtComputername.Location+%3D+%2720%2C60%27%3B%0D%0A++++%24txtComputername.Width+%3D+300%3B%0D%0A%0D%0A++++%24btnOK+%3D+New-Object+System.Windows.Forms.Button%3B%0D%0A++++%24btnOK.Text+%3D+%22Set%22%3B%0D%0A++++%24btnOK.Location+%3D+%27130%2C100%27%3B%0D%0A++++%24btnOK.DialogResult+%3D+%5BSystem.Windows.Forms.DialogResult%5D%3A%3AOK%3B%0D%0A%0D%0A++++%24form.AcceptButton+%3D+%24btnOK%3B%0D%0A%0D%0A++++%24form.Controls.AddRange%28%40%28%24lblMsg%2C%24lblComputername%2C%24txtComputername%2C%24btnOK%29%29%3B%0D%0A%0D%0A++++%24Error+%3D+%24False%3B%0D%0A++++%24ErrorMsg+%3D+%22%22%3B%0D%0A%0D%0A++++%24ComputernameRegex+%3D+%27%5E%28%3F%3D%5BA-Za-z0-9-%5D%7B3%2C15%7D%24%29%28%3F%3D.*%5BA-Za-z%5D%29%5BA-Za-z0-9%5D%28%3F%3A%5BA-Za-z0-9-%5D*%5BA-Za-z0-9%5D%29%3F%24%27%3B%0D%0A++++%24ComputernameRegexShort+%3D+%27%5E%5BA-Za-z0-9-%5D%7B3%2C15%7D%24%27%3B%0D%0A%0D%0A++++if+%28%24form.ShowDialog%28%29+-ne+%27OK%27%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Do+not+cancel.%22%3B%0D%0A++++%7D+elseif+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24txtComputername.Text%29%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Computer+name+cannot+be+empty.%22%3B%0D%0A++++%7D+elseif+%28%24txtComputername.Text+-notmatch+%24ComputernameRegex%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Computer+name+must+match+%27%24ComputernameRegexShort%27%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++return+%40%7B%0D%0A++++++++Computername+%3D+%24txtComputername.Text%3B%0D%0A++++++++Error+%3D+%24Error%3B%0D%0A++++++++ErrorMsg+%3D+%24ErrorMsg%3B%0D%0A++++%7D%3B%0D%0A%7D%0D%0A%0D%0Atry+%7B%0D%0A++++%24promptMsg+%3D+%22%22%3B%0D%0A++++do+%7B%0D%0A++++++++%24result+%3D+Show-Prompt+%24promptMsg%3B%0D%0A++++++++%24promptMsg+%3D+%24result.ErrorMsg%3B%0D%0A++++%7D+while+%28%24result.Error%29%3B%0D%0A%0D%0A++++return+%24result.Computername%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++return+%22BADNAME%22%3B%0D%0A%7D&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AutoLogonMode=Builtin&BuiltinAdministratorPassword=&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=HiddenSystem&ShowFileExtensions=true&ClassicContextMenu=true&LaunchToThisPC=true&TaskbarSearch=Icon&TaskbarIconsMode=Custom&TaskbarIconsXml=%3CLayoutModificationTemplate%0D%0A++++xmlns%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FLayoutModification%22%0D%0A++++xmlns%3Adefaultlayout%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FFullDefaultLayout%22%0D%0A++++xmlns%3Astart%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FStartLayout%22%0D%0A++++xmlns%3Ataskbar%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FTaskbarLayout%22%0D%0A++++Version%3D%221%22%3E%0D%0A++%3CCustomTaskbarLayoutCollection+PinListPlacement%3D%22Replace%22%3E%0D%0A++++%3Cdefaultlayout%3ATaskbarLayout%3E%0D%0A++++++%3Ctaskbar%3ATaskbarPinList%3E%0D%0A++++++++%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Microsoft.Windows.Explorer%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Chrome%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22%7B6D809377-6AF0-444B-8957-A3773F02200E%7D%5CNotepad%2B%2B%5Cnotepad%2B%2B.exe%22+PinGeneration%3D%221%22%2F%3E%0D%0A++++++%3C%2Ftaskbar%3ATaskbarPinList%3E%0D%0A++++%3C%2Fdefaultlayout%3ATaskbarLayout%3E%0D%0A+%3C%2FCustomTaskbarLayoutCollection%3E%0D%0A%3C%2FLayoutModificationTemplate%3E&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableLongPaths=true&AllowPowerShellScripts=true&DisableAppSuggestions=true&PreventDeviceEncryption=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DisablePointerPrecision=true&DeleteWindowsOld=true&EffectsMode=Default&DeleteEdgeDesktopIcon=true&DesktopIconsMode=Custom&IconRecycleBin=true&StartFoldersMode=Custom&StartFolderFileExplorer=true&StartFolderPersonalFolder=true&StartFolderSettings=true&WifiMode=Skip&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Disabled&ColorMode=Default&WallpaperMode=Default&LockScreenMode=Default&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveOutlook=true&RemoveSkype=true&RemoveSolitaire=true&RemoveGetStarted=true&RemoveXboxApps=true&SystemScript0=New-NetFirewallRule+-DisplayName+%27ICMPv4%27+-Profile+%27Any%27+-Protocol+%27ICMPv4%27+-Action+%27Allow%27%3B%0D%0ANew-NetFirewallRule+-DisplayName+%27ICMPv6%27+-Profile+%27Any%27+-Protocol+%27ICMPv6%27+-Action+%27Allow%27%3B&SystemScriptType0=Ps1&FirstLogonScript0=Stop-Service+-Name+wuauserv+-Force%3B%0D%0AStop-Service+-Name+bits+-Force%3B%0D%0ASet-Service+-Name+wuauserv+-StartupType+Disabled%3B%0D%0ASet-Service+-Name+bits+-StartupType+Disabled%3B&FirstLogonScriptType0=Ps1&FirstLogonScript1=try%7B%0D%0A++Write-Output+%22Waiting+to+install+apps%22%3B%0D%0A++Start-Sleep+120%3B%0D%0A++Write-Output+%22Installing+Chocolatey%22%3B%0D%0A++%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+%3D+%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+-bor+3072%3B%0D%0A++iex+%28%28New-Object+System.Net.WebClient%29.DownloadString%28%27https%3A%2F%2Fcommunity.chocolatey.org%2Finstall.ps1%27%29%29+-ErrorAction+Stop%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fchocopackages.config+-OutFile+%22%24env%3ATEMP%5Cpackages.config%22+-ErrorAction+Stop%3B%0D%0A++choco+install+-y+%22%24env%3ATEMP%5Cpackages.config%22+%2D%2Dlimit-output+%2D%2Dno-progress+%2D%2Dlog-file%3D%22%24env%3AWINDIR%5CSetup%5CScripts%5Cchocolatey.apps.log%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cpackages.config%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType1=Ps1&FirstLogonScript2=try%7B%0D%0A++Start-Sleep+30%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fappassociations.xml+-OutFile+%22%24env%3ATEMP%5Cappassociations.xml%22+-ErrorAction+Stop%3B%0D%0A++Dism+%2FOnline+%2FImport-DefaultAppAssociations%3A%22%24env%3ATEMP%5Cappassociations.xml%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cappassociations.xml%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType2=Ps1&FirstLogonScript3=Add-Type+-AssemblyName+System.Windows.Forms%3B%0D%0AAdd-Type+-AssemblyName+System.Drawing%3B%0D%0A%0D%0Afunction+Show-UserPrompt+%7B%0D%0A++++param%28%5Bstring%5D%24Msg+%3D+%22%22%29%3B%0D%0A%0D%0A++++%24form+%3D+New-Object+System.Windows.Forms.Form%3B%0D%0A++++%24form.Text+%3D+%22Create+Administrator+Account%22%3B%0D%0A++++%24form.Size+%3D+New-Object+System.Drawing.Size%28360%2C300%29%3B%0D%0A++++%24form.StartPosition+%3D+%22CenterScreen%22%3B%0D%0A++++%24form.Topmost+%3D+%24true%3B%0D%0A%0D%0A++++%24lblMsg+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblMsg.Text+%3D+%24Msg%3B%0D%0A++++%24lblMsg.Location+%3D+%2720%2C10%27%3B%0D%0A++++%24lblMsg.AutoSize+%3D+%24true%3B%0D%0A++++%24lblMsg.ForeColor+%3D+%22Red%22%3B%0D%0A%0D%0A++++%24lblUser+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblUser.Text+%3D+%22Username%3A%22%3B%0D%0A++++%24lblUser.Location+%3D+%2720%2C40%27%3B%0D%0A++++%24lblUser.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtUser+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtUser.Location+%3D+%2720%2C60%27%3B%0D%0A++++%24txtUser.Width+%3D+300%3B%0D%0A%0D%0A++++%24lblPass+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblPass.Text+%3D+%22Password%3A%22%3B%0D%0A++++%24lblPass.Location+%3D+%2720%2C100%27%3B%0D%0A++++%24lblPass.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtPass+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtPass.Location+%3D+%2720%2C120%27%3B%0D%0A++++%24txtPass.Width+%3D+300%3B%0D%0A++++%24txtPass.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24lblConfirm+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblConfirm.Text+%3D+%22Confirm+Password%3A%22%3B%0D%0A++++%24lblConfirm.Location+%3D+%2720%2C160%27%3B%0D%0A++++%24lblConfirm.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtConfirm+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtConfirm.Location+%3D+%2720%2C180%27%3B%0D%0A++++%24txtConfirm.Width+%3D+300%3B%0D%0A++++%24txtConfirm.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24btnOK+%3D+New-Object+System.Windows.Forms.Button%3B%0D%0A++++%24btnOK.Text+%3D+%22Create%22%3B%0D%0A++++%24btnOK.Location+%3D+%27130%2C220%27%3B%0D%0A++++%24btnOK.DialogResult+%3D+%5BSystem.Windows.Forms.DialogResult%5D%3A%3AOK%3B%0D%0A%0D%0A++++%24form.AcceptButton+%3D+%24btnOK%3B%0D%0A%0D%0A++++%24form.Controls.AddRange%28%40%28%24lblMsg%2C%24lblUser%2C%24txtUser%2C%24lblPass%2C%24txtPass%2C%24lblConfirm%2C%24txtConfirm%2C%24btnOK%29%29%3B%0D%0A%0D%0A++++%24Error+%3D+%24False%3B%0D%0A++++%24ErrorMsg+%3D+%22%22%3B%0D%0A%0D%0A++++%24UsernameRegex+%3D+%27%5E%28%3F%21%5B._-%5D%24%29%28%3F%21.*%5C.%24%29%5BA-Za-z0-9._-%5D%7B1%2C20%7D%24%27%3B%0D%0A%0D%0A++++if+%28%24form.ShowDialog%28%29+-ne+%27OK%27%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Do+not+cancel.%22%3B%0D%0A++++%7D+elseif+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24txtUser.Text%29%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+cannot+be+empty.%22%3B%0D%0A++++%7D+elseif+%28%24txtUser.Text+-notmatch+%24UsernameRegex%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+must+match+%27%24UsernameRegex%27%22%3B%0D%0A++++%7D+elseif+%28%28Get-LocalUser%29.Name+-contains+%24txtUser.Text%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+%27%24%28%24txtUser.Text%29%27+is+already+in+use.%22%3B%0D%0A++++%7D+elseif+%28%24txtPass.Text+-ne+%24txtConfirm.Text%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Passwords+do+not+match.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++return+%40%7B%0D%0A++++++++Username+%3D+%24txtUser.Text%3B%0D%0A++++++++Password+%3D+%24txtPass.Text%3B%0D%0A++++++++Error+%3D+%24Error%3B%0D%0A++++++++ErrorMsg+%3D+%24ErrorMsg%3B%0D%0A++++%7D%3B%0D%0A%7D%0D%0A%0D%0Atry+%7B%0D%0A++++%24promptMsg+%3D+%22%22%3B%0D%0A++++do+%7B%0D%0A++++++++%24result+%3D+Show-UserPrompt+%24promptMsg%3B%0D%0A++++++++%24promptMsg+%3D+%24result.ErrorMsg%3B%0D%0A++++++++Write-Output+%22%24promptMsg%22%3B%0D%0A++++%7D+while+%28%24result.Error%29%3B%0D%0A%0D%0A++++Write-Output+%22Creating+user+%27%24%28%24result.Username%29%27%22%3B%0D%0A%0D%0A++++if+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24result.Password%29%29+%7B%0D%0A++++++++Write-Output+%22Leaving+password+blank.%22%3B%0D%0A++++++++New-LocalUser+-Name+%24result.Username+-NoPassword+-AccountNeverExpires+-FullName+%24result.Username+-ErrorAction+Stop+%7C+Set-LocalUser+-PasswordNeverExpires%3A%24True+-ErrorAction+Stop%3B%0D%0A++++%7D+else+%7B%0D%0A++++++++New-LocalUser+-Name+%24result.Username+-Password+%24%28ConvertTo-SecureString+%24result.Password+-AsPlainText+-Force%29+-PasswordNeverExpires+-AccountNeverExpires+-FullName+%24result.Username+-ErrorAction+Stop%3B%0D%0A++++%7D%0D%0A%0D%0A++++Add-LocalGroupMember+-Group+%22Administrators%22+-Member+%24result.Username+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Disable-LocalUser+-Name+%22Administrator%22+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Write-Output+%22User+created.+Administrator+disabled.+Please+Log+out.%22%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++exit+1%3B%0D%0A%7D&FirstLogonScriptType3=Ps1&FirstLogonScript4=Set-Service+-Name+bits+-StartupType+Automatic%3B%0D%0ASet-Service+-Name+wuauserv+-StartupType+Manual%3B%0D%0A&FirstLogonScriptType4=Ps1&FirstLogonScript5=shutdown+%2Ff+%2Fl%3B&FirstLogonScriptType5=Ps1&WdacMode=Skip&AppLockerMode=Skip&ComponentContent0=%3CPersistAllDeviceInstalls%3Etrue%3C%2FPersistAllDeviceInstalls%3E&Component0=Microsoft-Windows-PnpSysprep-generalize-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&GeoLocation=244&ProcessorArchitecture=amd64&KeepSensitiveFiles=true&ComputerNameMode=Script&ComputerNameScript=Add-Type+-AssemblyName+System.Windows.Forms%3B%0D%0AAdd-Type+-AssemblyName+System.Drawing%3B%0D%0A%0D%0Afunction+Show-Prompt+%7B%0D%0A++++param%28%5Bstring%5D%24Msg+%3D+%22%22%29%3B%0D%0A%0D%0A++++%24form+%3D+New-Object+System.Windows.Forms.Form%3B%0D%0A++++%24form.Text+%3D+%22Set+Computer+Name%22%3B%0D%0A++++%24form.Size+%3D+New-Object+System.Drawing.Size%28360%2C180%29%3B%0D%0A++++%24form.StartPosition+%3D+%22CenterScreen%22%3B%0D%0A++++%24form.Topmost+%3D+%24true%3B%0D%0A%0D%0A++++%24lblMsg+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblMsg.Text+%3D+%24Msg%3B%0D%0A++++%24lblMsg.Location+%3D+%2720%2C10%27%3B%0D%0A++++%24lblMsg.AutoSize+%3D+%24true%3B%0D%0A++++%24lblMsg.ForeColor+%3D+%22Red%22%3B%0D%0A%0D%0A++++%24lblComputername+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblComputername.Text+%3D+%22Computer+Name%3A%22%3B%0D%0A++++%24lblComputername.Location+%3D+%2720%2C40%27%3B%0D%0A++++%24lblComputername.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtComputername+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtComputername.Location+%3D+%2720%2C60%27%3B%0D%0A++++%24txtComputername.Width+%3D+300%3B%0D%0A%0D%0A++++%24btnOK+%3D+New-Object+System.Windows.Forms.Button%3B%0D%0A++++%24btnOK.Text+%3D+%22Set%22%3B%0D%0A++++%24btnOK.Location+%3D+%27130%2C100%27%3B%0D%0A++++%24btnOK.DialogResult+%3D+%5BSystem.Windows.Forms.DialogResult%5D%3A%3AOK%3B%0D%0A%0D%0A++++%24form.AcceptButton+%3D+%24btnOK%3B%0D%0A%0D%0A++++%24form.Controls.AddRange%28%40%28%24lblMsg%2C%24lblComputername%2C%24txtComputername%2C%24btnOK%29%29%3B%0D%0A%0D%0A++++%24Error+%3D+%24False%3B%0D%0A++++%24ErrorMsg+%3D+%22%22%3B%0D%0A%0D%0A++++%24ComputernameRegex+%3D+%27%5E%28%3F%3D%5BA-Za-z0-9-%5D%7B3%2C15%7D%24%29%28%3F%3D.*%5BA-Za-z%5D%29%5BA-Za-z0-9%5D%28%3F%3A%5BA-Za-z0-9-%5D*%5BA-Za-z0-9%5D%29%3F%24%27%3B%0D%0A++++%24ComputernameRegexShort+%3D+%27%5E%5BA-Za-z0-9-%5D%7B3%2C15%7D%24%27%3B%0D%0A%0D%0A++++if+%28%24form.ShowDialog%28%29+-ne+%27OK%27%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Do+not+cancel.%22%3B%0D%0A++++%7D+elseif+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24txtComputername.Text%29%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Computer+name+cannot+be+empty.%22%3B%0D%0A++++%7D+elseif+%28%24txtComputername.Text+-notmatch+%24ComputernameRegex%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Computer+name+must+match+%27%24ComputernameRegexShort%27%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++return+%40%7B%0D%0A++++++++Computername+%3D+%24txtComputername.Text%3B%0D%0A++++++++Error+%3D+%24Error%3B%0D%0A++++++++ErrorMsg+%3D+%24ErrorMsg%3B%0D%0A++++%7D%3B%0D%0A%7D%0D%0A%0D%0Atry+%7B%0D%0A++++%24promptMsg+%3D+%22%22%3B%0D%0A++++do+%7B%0D%0A++++++++%24result+%3D+Show-Prompt+%24promptMsg%3B%0D%0A++++++++%24promptMsg+%3D+%24result.ErrorMsg%3B%0D%0A++++%7D+while+%28%24result.Error%29%3B%0D%0A%0D%0A++++return+%24result.Computername%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++return+%22BADNAME%22%3B%0D%0A%7D&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AutoLogonMode=Builtin&BuiltinAdministratorPassword=&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=HiddenSystem&ShowFileExtensions=true&ClassicContextMenu=true&LaunchToThisPC=true&TaskbarSearch=Icon&TaskbarIconsMode=Custom&TaskbarIconsXml=%3CLayoutModificationTemplate%0D%0A++++xmlns%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FLayoutModification%22%0D%0A++++xmlns%3Adefaultlayout%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FFullDefaultLayout%22%0D%0A++++xmlns%3Astart%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FStartLayout%22%0D%0A++++xmlns%3Ataskbar%3D%22http%3A%2F%2Fschemas.microsoft.com%2FStart%2F2014%2FTaskbarLayout%22%0D%0A++++Version%3D%221%22%3E%0D%0A++%3CCustomTaskbarLayoutCollection+PinListPlacement%3D%22Replace%22%3E%0D%0A++++%3Cdefaultlayout%3ATaskbarLayout%3E%0D%0A++++++%3Ctaskbar%3ATaskbarPinList%3E%0D%0A++++++++%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Microsoft.Windows.Explorer%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22Chrome%22+PinGeneration%3D%221%22%2F%3E%0D%0A%09%09%3Ctaskbar%3ADesktopApp+DesktopApplicationID%3D%22%7B6D809377-6AF0-444B-8957-A3773F02200E%7D%5CNotepad%2B%2B%5Cnotepad%2B%2B.exe%22+PinGeneration%3D%221%22%2F%3E%0D%0A++++++%3C%2Ftaskbar%3ATaskbarPinList%3E%0D%0A++++%3C%2Fdefaultlayout%3ATaskbarLayout%3E%0D%0A+%3C%2FCustomTaskbarLayoutCollection%3E%0D%0A%3C%2FLayoutModificationTemplate%3E&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableLongPaths=true&AllowPowerShellScripts=true&DisableAppSuggestions=true&PreventDeviceEncryption=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DisablePointerPrecision=true&DeleteWindowsOld=true&EffectsMode=Default&DeleteEdgeDesktopIcon=true&DesktopIconsMode=Custom&IconRecycleBin=true&StartFoldersMode=Custom&StartFolderFileExplorer=true&StartFolderPersonalFolder=true&StartFolderSettings=true&WifiMode=Skip&ExpressSettings=DisableAll&LockKeysMode=Skip&StickyKeysMode=Disabled&ColorMode=Default&WallpaperMode=Default&LockScreenMode=Default&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveOutlook=true&RemoveSkype=true&RemoveSolitaire=true&RemoveGetStarted=true&RemoveXboxApps=true&SystemScript0=New-NetFirewallRule+-DisplayName+%27ICMPv4%27+-Profile+%27Any%27+-Protocol+%27ICMPv4%27+-Action+%27Allow%27%3B%0D%0ANew-NetFirewallRule+-DisplayName+%27ICMPv6%27+-Profile+%27Any%27+-Protocol+%27ICMPv6%27+-Action+%27Allow%27%3B&SystemScriptType0=Ps1&SystemScript1=Add-Type+-AssemblyName+System.Windows.Forms%3B%0D%0AAdd-Type+-AssemblyName+System.Drawing%3B%0D%0A%0D%0Afunction+Show-UserPrompt+%7B%0D%0A++++param%28%5Bstring%5D%24Msg+%3D+%22%22%29%3B%0D%0A%0D%0A++++%24form+%3D+New-Object+System.Windows.Forms.Form%3B%0D%0A++++%24form.Text+%3D+%22Create+Administrator+Account%22%3B%0D%0A++++%24form.Size+%3D+New-Object+System.Drawing.Size%28360%2C300%29%3B%0D%0A++++%24form.StartPosition+%3D+%22CenterScreen%22%3B%0D%0A++++%24form.Topmost+%3D+%24true%3B%0D%0A%0D%0A++++%24lblMsg+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblMsg.Text+%3D+%24Msg%3B%0D%0A++++%24lblMsg.Location+%3D+%2720%2C10%27%3B%0D%0A++++%24lblMsg.AutoSize+%3D+%24true%3B%0D%0A++++%24lblMsg.ForeColor+%3D+%22Red%22%3B%0D%0A%0D%0A++++%24lblUser+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblUser.Text+%3D+%22Username%3A%22%3B%0D%0A++++%24lblUser.Location+%3D+%2720%2C40%27%3B%0D%0A++++%24lblUser.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtUser+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtUser.Location+%3D+%2720%2C60%27%3B%0D%0A++++%24txtUser.Width+%3D+300%3B%0D%0A%0D%0A++++%24lblPass+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblPass.Text+%3D+%22Password%3A%22%3B%0D%0A++++%24lblPass.Location+%3D+%2720%2C100%27%3B%0D%0A++++%24lblPass.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtPass+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtPass.Location+%3D+%2720%2C120%27%3B%0D%0A++++%24txtPass.Width+%3D+300%3B%0D%0A++++%24txtPass.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24lblConfirm+%3D+New-Object+System.Windows.Forms.Label%3B%0D%0A++++%24lblConfirm.Text+%3D+%22Confirm+Password%3A%22%3B%0D%0A++++%24lblConfirm.Location+%3D+%2720%2C160%27%3B%0D%0A++++%24lblConfirm.AutoSize+%3D+%24true%3B%0D%0A%0D%0A++++%24txtConfirm+%3D+New-Object+System.Windows.Forms.TextBox%3B%0D%0A++++%24txtConfirm.Location+%3D+%2720%2C180%27%3B%0D%0A++++%24txtConfirm.Width+%3D+300%3B%0D%0A++++%24txtConfirm.UseSystemPasswordChar+%3D+%24true%3B%0D%0A%0D%0A++++%24btnOK+%3D+New-Object+System.Windows.Forms.Button%3B%0D%0A++++%24btnOK.Text+%3D+%22Create%22%3B%0D%0A++++%24btnOK.Location+%3D+%27130%2C220%27%3B%0D%0A++++%24btnOK.DialogResult+%3D+%5BSystem.Windows.Forms.DialogResult%5D%3A%3AOK%3B%0D%0A%0D%0A++++%24form.AcceptButton+%3D+%24btnOK%3B%0D%0A%0D%0A++++%24form.Controls.AddRange%28%40%28%24lblMsg%2C%24lblUser%2C%24txtUser%2C%24lblPass%2C%24txtPass%2C%24lblConfirm%2C%24txtConfirm%2C%24btnOK%29%29%3B%0D%0A%0D%0A++++%24Error+%3D+%24False%3B%0D%0A++++%24ErrorMsg+%3D+%22%22%3B%0D%0A%0D%0A++++%24UsernameRegex+%3D+%27%5E%28%3F%21%5B._-%5D%24%29%28%3F%21.*%5C.%24%29%5BA-Za-z0-9._-%5D%7B1%2C20%7D%24%27%3B%0D%0A%0D%0A++++if+%28%24form.ShowDialog%28%29+-ne+%27OK%27%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Do+not+cancel.%22%3B%0D%0A++++%7D+elseif+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24txtUser.Text%29%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+cannot+be+empty.%22%3B%0D%0A++++%7D+elseif+%28%24txtUser.Text+-notmatch+%24UsernameRegex%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+must+match+%27%24UsernameRegex%27%22%3B%0D%0A++++%7D+elseif+%28%28Get-LocalUser%29.Name+-contains+%24txtUser.Text%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Username+%27%24%28%24txtUser.Text%29%27+is+already+in+use.%22%3B%0D%0A++++%7D+elseif+%28%24txtPass.Text+-ne+%24txtConfirm.Text%29+%7B%0D%0A++++++++%24Error+%3D+%24True%3B%0D%0A++++++++%24ErrorMsg+%3D+%22Passwords+do+not+match.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++%24User+%3D+%5BPSCustomObject%5D%40%7B%0D%0A++++++++Name+%3D+%24txtUser.Text%3B%0D%0A++++++++Password+%3D+%24txtPass.Text%3B%0D%0A++++%7D%3B%0D%0A%0D%0A++++return+%40%7B%0D%0A++++++++User+%3D+%24User%3B%0D%0A++++++++Error+%3D+%24Error%3B%0D%0A++++++++ErrorMsg+%3D+%24ErrorMsg%3B%0D%0A++++%7D%3B%0D%0A%7D%0D%0A%0D%0Atry+%7B%0D%0A++++%24promptMsg+%3D+%22%22%3B%0D%0A++++do+%7B%0D%0A++++++++%24result+%3D+Show-UserPrompt+%24promptMsg%3B%0D%0A++++++++%24promptMsg+%3D+%24result.ErrorMsg%3B%0D%0A++++++++Write-Output+%22%24promptMsg%22%3B%0D%0A++++%7D+while+%28%24result.Error%29%3B%0D%0A%0D%0A++++Write-Output+%22Got+user+%27%24%28%24result.User.Name%29%27%22%3B%0D%0A%0D%0A++++if+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24result.User.Password%29%29+%7B%0D%0A++++++++Write-Output+%22Using+blank+password.%22%3B%0D%0A++++++++%24result.User.Password+%3D+%22%22%3B%0D%0A++++%7D+else+%7B%0D%0A++++++++%24result.User.Password+%3D+%5BConvert%5D%3A%3AToBase64String%28%5BText.Encoding%5D%3A%3AUTF8.GetBytes%28%24result.User.Password%29%29%3B%0D%0A++++%7D%0D%0A%0D%0A++++%24result.User+%7C+Export-Csv+-Path+%22%24env%3AWINDIR%5CSetup%5CScripts%5Cuser.csv%22+-NoTypeInformation+-Encoding+UTF8+-ErrorAction+Stop%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++exit+1%3B%0D%0A%7D&SystemScriptType1=Ps1&FirstLogonScript0=try%7B%0D%0A++Write-Output+%22Waiting+to+install+apps%22%3B%0D%0A++Start-Sleep+120%3B%0D%0A++Write-Output+%22Installing+Chocolatey%22%3B%0D%0A++%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+%3D+%5BSystem.Net.ServicePointManager%5D%3A%3ASecurityProtocol+-bor+3072%3B%0D%0A++iex+%28%28New-Object+System.Net.WebClient%29.DownloadString%28%27https%3A%2F%2Fcommunity.chocolatey.org%2Finstall.ps1%27%29%29+-ErrorAction+Stop%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fchocopackages.config+-OutFile+%22%24env%3ATEMP%5Cpackages.config%22+-ErrorAction+Stop%3B%0D%0A++choco+install+-y+%22%24env%3ATEMP%5Cpackages.config%22+%2D%2Dlimit-output+%2D%2Dno-progress+%2D%2Dlog-file%3D%22%24env%3AWINDIR%5CSetup%5CScripts%5Cchocolatey.apps.log%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cpackages.config%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType0=Ps1&FirstLogonScript1=try%7B%0D%0A++Start-Sleep+30%3B%0D%0A++Invoke-WebRequest+https%3A%2F%2Fethanjansen.github.io%2Fwin11unattend%2Fappassociations.xml+-OutFile+%22%24env%3ATEMP%5Cappassociations.xml%22+-ErrorAction+Stop%3B%0D%0A++Dism+%2FOnline+%2FImport-DefaultAppAssociations%3A%22%24env%3ATEMP%5Cappassociations.xml%22%3B%0D%0A++Remove-Item+-Path+%22%24env%3ATEMP%5Cappassociations.xml%22+-Force%3B%0D%0A%7D+catch+%7B%0D%0A++Write-Error+%22Exception%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++exit+1%3B%0D%0A%7D&FirstLogonScriptType1=Ps1&FirstLogonScript2=try+%7B%0D%0A++++%24userCsvPath+%3D+%22%24env%3AWINDIR%5CSetup%5CScripts%5Cuser.csv%22%3B%0D%0A%0D%0A++++if+%28-not+%28Test-Path+%24userCsvPath%29%29+%7B%0D%0A++++++++throw+%22User+CSV+does+not+exist.+Will+not+create+a+user.%22%3B%0D%0A++++%7D%0D%0A%0D%0A++++%24user+%3D+Import-Csv+%24userCsvPath%3B%0D%0A%0D%0A++++Write-Output+%22Creating+user+%27%24%28%24user.Name%29%27%22%3B%0D%0A%0D%0A++++if+%28%5Bstring%5D%3A%3AIsNullOrWhiteSpace%28%24user.Password%29%29+%7B%0D%0A++++++++Write-Output+%22Leaving+password+blank.%22%3B%0D%0A++++++++New-LocalUser+-Name+%24user.Name+-NoPassword+-AccountNeverExpires+-FullName+%24user.Name+-ErrorAction+Stop+%7C+Set-LocalUser+-PasswordNeverExpires%3A%24True+-ErrorAction+Stop%3B%0D%0A++++%7D+else+%7B%0D%0A++++++++%24PasswordPlain+%3D+%5BText.Encoding%5D%3A%3AUTF8.GetString%28%5BConvert%5D%3A%3AFromBase64String%28%24user.Password%29%29%3B%0D%0A++++++++New-LocalUser+-Name+%24user.Name+-Password+%24%28ConvertTo-SecureString+%24PasswordPlain+-AsPlainText+-Force%29+-PasswordNeverExpires+-AccountNeverExpires+-FullName+%24user.Name+-ErrorAction+Stop%3B%0D%0A++++%7D%0D%0A%0D%0A++++Add-LocalGroupMember+-Group+%22Administrators%22+-Member+%24user.Name+-ErrorAction+Stop%3B%0D%0A++++Disable-LocalUser+-Name+%22Administrator%22+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Remove-Item+%24userCsvPath+-Force+-ErrorAction+Stop%3B%0D%0A%0D%0A++++Write-Output+%22User+created.+Administrator+disabled.+Please+Log+out.%22%3B%0D%0A%0D%0A%7D+catch+%7B%0D%0A++++Write-Error+%22Exception+Occurred%3A+%24%28%24_.Exception.Message%29%22%3B%0D%0A++++exit+1%3B%0D%0A%7D%0D%0A&FirstLogonScriptType2=Ps1&FirstLogonScript3=shutdown+%2Fr+%2Ff+%2Ft+480%3B&FirstLogonScriptType3=Ps1&WdacMode=Skip&AppLockerMode=Skip&ComponentContent0=%3CPersistAllDeviceInstalls%3Etrue%3C%2FPersistAllDeviceInstalls%3E&Component0=Microsoft-Windows-PnpSysprep-generalize-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -366,38 +366,6 @@ New-NetFirewallRule -DisplayName 'ICMPv4' -Profile 'Any' -Protocol 'ICMPv4' -Act
 New-NetFirewallRule -DisplayName 'ICMPv6' -Profile 'Any' -Protocol 'ICMPv6' -Action 'Allow';
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-02.ps1">
-Stop-Service -Name wuauserv -Force;
-Stop-Service -Name bits -Force;
-Set-Service -Name wuauserv -StartupType Disabled;
-Set-Service -Name bits -StartupType Disabled;
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
-try{
-  Write-Output "Waiting to install apps";
-  Start-Sleep 120;
-  Write-Output "Installing Chocolatey";
-  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-  iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) -ErrorAction Stop;
-  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/chocopackages.config -OutFile "$env:TEMP\packages.config" -ErrorAction Stop;
-  choco install -y "$env:TEMP\packages.config" --limit-output --no-progress --log-file="$env:WINDIR\Setup\Scripts\chocolatey.apps.log";
-  Remove-Item -Path "$env:TEMP\packages.config" -Force;
-} catch {
-  Write-Error "Exception: $($_.Exception.Message)";
-  exit 1;
-}
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-04.ps1">
-try{
-  Start-Sleep 30;
-  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/appassociations.xml -OutFile "$env:TEMP\appassociations.xml" -ErrorAction Stop;
-  Dism /Online /Import-DefaultAppAssociations:"$env:TEMP\appassociations.xml";
-  Remove-Item -Path "$env:TEMP\appassociations.xml" -Force;
-} catch {
-  Write-Error "Exception: $($_.Exception.Message)";
-  exit 1;
-}
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-05.ps1">
 Add-Type -AssemblyName System.Windows.Forms;
 Add-Type -AssemblyName System.Drawing;
 
@@ -476,9 +444,13 @@ function Show-UserPrompt {
         $ErrorMsg = "Passwords do not match.";
     }
 
-    return @{
-        Username = $txtUser.Text;
+    $User = [PSCustomObject]@{
+        Name = $txtUser.Text;
         Password = $txtPass.Text;
+    };
+
+    return @{
+        User = $User;
         Error = $Error;
         ErrorMsg = $ErrorMsg;
     };
@@ -492,18 +464,72 @@ try {
         Write-Output "$promptMsg";
     } while ($result.Error);
 
-    Write-Output "Creating user '$($result.Username)'";
+    Write-Output "Got user '$($result.User.Name)'";
 
-    if ([string]::IsNullOrWhiteSpace($result.Password)) {
-        Write-Output "Leaving password blank.";
-        New-LocalUser -Name $result.Username -NoPassword -AccountNeverExpires -FullName $result.Username -ErrorAction Stop | Set-LocalUser -PasswordNeverExpires:$True -ErrorAction Stop;
+    if ([string]::IsNullOrWhiteSpace($result.User.Password)) {
+        Write-Output "Using blank password.";
+        $result.User.Password = "";
     } else {
-        New-LocalUser -Name $result.Username -Password $(ConvertTo-SecureString $result.Password -AsPlainText -Force) -PasswordNeverExpires -AccountNeverExpires -FullName $result.Username -ErrorAction Stop;
+        $result.User.Password = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($result.User.Password));
     }
 
-    Add-LocalGroupMember -Group "Administrators" -Member $result.Username -ErrorAction Stop;
+    $result.User | Export-Csv -Path "$env:WINDIR\Setup\Scripts\user.csv" -NoTypeInformation -Encoding UTF8 -ErrorAction Stop;
 
+} catch {
+    Write-Error "Exception Occurred: $($_.Exception.Message)";
+    exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1">
+try{
+  Write-Output "Waiting to install apps";
+  Start-Sleep 120;
+  Write-Output "Installing Chocolatey";
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+  iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) -ErrorAction Stop;
+  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/chocopackages.config -OutFile "$env:TEMP\packages.config" -ErrorAction Stop;
+  choco install -y "$env:TEMP\packages.config" --limit-output --no-progress --log-file="$env:WINDIR\Setup\Scripts\chocolatey.apps.log";
+  Remove-Item -Path "$env:TEMP\packages.config" -Force;
+} catch {
+  Write-Error "Exception: $($_.Exception.Message)";
+  exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-04.ps1">
+try{
+  Start-Sleep 30;
+  Invoke-WebRequest https://ethanjansen.github.io/win11unattend/appassociations.xml -OutFile "$env:TEMP\appassociations.xml" -ErrorAction Stop;
+  Dism /Online /Import-DefaultAppAssociations:"$env:TEMP\appassociations.xml";
+  Remove-Item -Path "$env:TEMP\appassociations.xml" -Force;
+} catch {
+  Write-Error "Exception: $($_.Exception.Message)";
+  exit 1;
+}
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-05.ps1">
+try {
+    $userCsvPath = "$env:WINDIR\Setup\Scripts\user.csv";
+
+    if (-not (Test-Path $userCsvPath)) {
+        throw "User CSV does not exist. Will not create a user.";
+    }
+
+    $user = Import-Csv $userCsvPath;
+
+    Write-Output "Creating user '$($user.Name)'";
+
+    if ([string]::IsNullOrWhiteSpace($user.Password)) {
+        Write-Output "Leaving password blank.";
+        New-LocalUser -Name $user.Name -NoPassword -AccountNeverExpires -FullName $user.Name -ErrorAction Stop | Set-LocalUser -PasswordNeverExpires:$True -ErrorAction Stop;
+    } else {
+        $PasswordPlain = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($user.Password));
+        New-LocalUser -Name $user.Name -Password $(ConvertTo-SecureString $PasswordPlain -AsPlainText -Force) -PasswordNeverExpires -AccountNeverExpires -FullName $user.Name -ErrorAction Stop;
+    }
+
+    Add-LocalGroupMember -Group "Administrators" -Member $user.Name -ErrorAction Stop;
     Disable-LocalUser -Name "Administrator" -ErrorAction Stop;
+
+    Remove-Item $userCsvPath -Force -ErrorAction Stop;
 
     Write-Output "User created. Administrator disabled. Please Log out.";
 
@@ -513,11 +539,7 @@ try {
 }
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-06.ps1">
-Set-Service -Name bits -StartupType Automatic;
-Set-Service -Name wuauserv -StartupType Manual;
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-07.ps1">
-shutdown /f /l;
+shutdown /r /f /t 480;
 		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
@@ -578,6 +600,9 @@ $scripts = @(
 	};
 	{
 		&amp; 'C:\Windows\Setup\Scripts\unattend-01.ps1';
+	};
+	{
+		&amp; 'C:\Windows\Setup\Scripts\unattend-02.ps1';
 	};
 );
 
@@ -778,9 +803,6 @@ $scripts = @(
 		cmd.exe /c "rmdir C:\Windows.old";
 	};
 	{
-		&amp; 'C:\Windows\Setup\Scripts\unattend-02.ps1';
-	};
-	{
 		&amp; 'C:\Windows\Setup\Scripts\unattend-03.ps1';
 	};
 	{
@@ -791,9 +813,6 @@ $scripts = @(
 	};
 	{
 		&amp; 'C:\Windows\Setup\Scripts\unattend-06.ps1';
-	};
-	{
-		&amp; 'C:\Windows\Setup\Scripts\unattend-07.ps1';
 	};
 );
 
