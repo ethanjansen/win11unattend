@@ -17,17 +17,29 @@
 #>
 try {
   Invoke-WebRequest https://ethanjansen.github.io/win11unattend/unattend.xml -OutFile "$env:WINDIR\Panther\unattend.xml" -ErrorAction Stop;
-  Write-Host "Configuring Windows...";
+  Write-Output "Configuring Windows...";
+  $UnattendFiles = @("$env:WINDIR\Panther\Unattend\Unattend.xml", "$env:WINDIR\Panther\Unattend\Autounattend.xml", "$env:WINDIR\System32\Sysprep\Unattend.xml", "$env:SYSTEMDRIVE\Unattend.xml", "$($env:SYSTEMDRIVE)\Autounattend.xml");
+  foreach ($File in $UnattendFiles) {
+    if (Test-Path -LiteralPath $File) {
+      Remove-Item -LiteralPath $File -Force -ErrorAction Stop;
+    }
+  }
+  $RegUnattend = "HKLM:\System\Setup";
+  if (Test-Path $RegUnattend) {
+    if ($null -ne $(Get-ItemProperty -Path $RegUnattend -Name "UnattendFile" -ErrorAction SilentlyContinue)) {
+      Remove-ItemProperty -Path $RegUnattend -Name "UnattendFile" -Force -ErrorAction Stop;
+    }
+  }
   $blv = Get-BitLockerVolume -MountPoint $env:SystemDrive -ErrorAction Stop;
   if ($blv.VolumeStatus -eq "FullyEncrypted" -or $blv.VolumeStatus -eq "EncryptionInProgress") {
     Disable-BitLocker -MountPoint $env:SystemDrive -ErrorAction Stop | Out-Null;
     do {
-      Write-Host "Decrypting BitLocker: $($blv.EncryptionPercentage) encrypted...";
+      Write-Output "Decrypting BitLocker: $($blv.EncryptionPercentage) encrypted...";
       Start-Sleep -Seconds 10;
       $blv = Get-BitLockerVolume -MountPoint $env:SystemDrive;
     } while ($blv.VolumeStatus -ne "FullyDecrypted");
   }
-  Write-Host "Using /generalize";
+  Write-Output "Using /generalize";
   & "$env:WINDIR\System32\Sysprep\Sysprep.exe" /generalize /oobe /unattend:"$env:WINDIR\Panther\unattend.xml" /reboot;
 } catch {
   Write-Error "Fatal error: $($_.Exception.Message)";
